@@ -93,13 +93,15 @@ class NowInStore_CatalogBuilder
             //
             //     }
             // }
+            $main_image = wp_get_attachment_image_src( $product->get_image_id(), "full" );
+            $thumbnail_image = wp_get_attachment_image_src( $product->get_image_id(), array(75,75) );
             array_push($products, array(
                     "id" => get_the_ID(),
                     "title" => $product->get_title(),
                     "sku" => $product->get_sku(),
                     "price" => $product->get_price(),
-                    "main_image" =>  wp_get_attachment_image_src( $product->get_image_id(), "full" )[0],
-                    "thumbnail_image" =>  wp_get_attachment_image_src( $product->get_image_id(), array(75,75) )[0],
+                    "main_image" =>  $main_image[0],
+                    "thumbnail_image" =>  $thumbnail_image[0],
                     "iso_currency_code" => $iso_currency_code,
                     "url" => get_permalink(),
                     "variations" => $formatted_attributes
@@ -112,7 +114,7 @@ class NowInStore_CatalogBuilder
         }
       } else if ( get_query_var( 'nowinstore_resource' ) == 'categories' ) {
         header( 'Content-Type: application/json' );
-        $categories = [];
+        $categories = array();
         $product_categories = get_terms( 'product_cat', array('orderby' => 'name', 'order'   => 'ASC', 'hide_empty' => true) );
         foreach($product_categories as $product_category) {
           if ($product_category->parent != 0) {
