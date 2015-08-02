@@ -68,7 +68,7 @@ class NowInStore_CatalogBuilder
           } else {
 
             $iso_currency_code = get_woocommerce_currency();
-            $products = [];
+            $products = array();
             while ( $loop->have_posts() ) : $loop->the_post();
             global $product;
             // $attributes = $product->get_attributes();
@@ -93,7 +93,7 @@ class NowInStore_CatalogBuilder
             //
             //     }
             // }
-            array_push($products, [
+            array_push($products, array(
                     "id" => get_the_ID(),
                     "title" => $product->get_title(),
                     "sku" => $product->get_sku(),
@@ -103,7 +103,7 @@ class NowInStore_CatalogBuilder
                     "iso_currency_code" => $iso_currency_code,
                     "url" => get_permalink(),
                     "variations" => $formatted_attributes
-            ]);
+            ));
             endwhile;
 
             wp_reset_query();
@@ -116,10 +116,10 @@ class NowInStore_CatalogBuilder
         $product_categories = get_terms( 'product_cat', array('orderby' => 'name', 'order'   => 'ASC', 'hide_empty' => true) );
         foreach($product_categories as $product_category) {
           if ($product_category->parent != 0) {
-            array_push($categories, [
+            array_push($categories, array(
                     "id" => $product_category->term_id,
                     "title" => $product_category->name
-            ]);
+            ));
           }
         }
         echo json_encode($product_categories);
