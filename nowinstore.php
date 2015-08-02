@@ -3,7 +3,7 @@
    Plugin Name: WooCommerce - Now In Store Catalog Builder
    Plugin URI: http://www.nowinstore.com
    Description: Create beautiful product catalogs that you can print or share online.
-   Version: 1.0.1
+   Version: 1.0.2
    Author: Now In Store Inc.
    Author URI: https://www.nowinstore.com
    License: GPL2
