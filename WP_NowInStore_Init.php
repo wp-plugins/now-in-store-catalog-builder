@@ -21,6 +21,8 @@ class NowInStore_CatalogBuilder
 
     public function add_rewrite_rules() {
       // add_rewrite_endpoint('nowinstore', EP_PERMALINK | EP_PAGES );
+      add_rewrite_rule('index.php/catalogbuilder/(.+?)/(.+?)?$', 'index.php?nowinstore_resource=$matches[1]&action=$matches[2]', 'top');
+      add_rewrite_rule('index.php/catalogbuilder/(.+?)?$', 'index.php?nowinstore_resource=$matches[1]', 'top');
       add_rewrite_rule('catalogbuilder/(.+?)/(.+?)?$', 'index.php?nowinstore_resource=$matches[1]&action=$matches[2]', 'top');
       add_rewrite_rule('catalogbuilder/(.+?)?$', 'index.php?nowinstore_resource=$matches[1]', 'top');
            flush_rewrite_rules();
