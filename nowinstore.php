@@ -8,8 +8,8 @@
    Author URI: https://www.nowinstore.com
    License: GPL2
    */
-   error_reporting(E_ALL);
-   ini_set('display_errors', 1);
+  //  error_reporting(E_ALL);
+  //  ini_set('display_errors', 1);
    require_once dirname(__FILE__) . '/WP_NowInStore_Init.php';
    function plugin_action_links( $actions )
     {
